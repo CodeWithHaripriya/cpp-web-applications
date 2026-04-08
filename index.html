@@ -1,0 +1,30 @@
+<form id="userForm">
+  <input type="text" id="name" placeholder="Name" required>
+  <input type="number" id="age" placeholder="Age" required>
+  <input type="email" id="email" placeholder="Email" required>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById("userForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = {
+        name: document.getElementById("name").value,
+        age: parseInt(document.getElementById("age").value),
+        email: document.getElementById("email").value
+    };
+
+    const res = await fetch("http://localhost:8080/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+
+    if (res.ok) {
+        alert("Submitted successfully!");
+    } else {
+        alert("Submission failed!");
+    }
+});
+</script>
