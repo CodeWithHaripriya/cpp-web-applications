@@ -11,18 +11,18 @@ bool sendEmail(const std::string& to, const std::string& subject, const std::str
     curl = curl_easy_init();
     if(curl) {
         struct curl_slist* recipients = nullptr;
-        curl_easy_setopt(curl, CURLOPT_USERNAME, "haripriyaajai99@gmail.com");
-        curl_easy_setopt(curl, CURLOPT_PASSWORD, "Ammu@1804");
+        curl_easy_setopt(curl, CURLOPT_USERNAME, "example@gmail.com");
+        curl_easy_setopt(curl, CURLOPT_PASSWORD, "sample123");
         curl_easy_setopt(curl, CURLOPT_URL, "smtp://smtp.gmail.com:587");
         curl_easy_setopt(curl, CURLOPT_USE_SSL, (long)CURLUSESSL_ALL);
 
-        curl_easy_setopt(curl, CURLOPT_MAIL_FROM, "haripriyaajai99@gmail.com");
+        curl_easy_setopt(curl, CURLOPT_MAIL_FROM, "example@gmail.com");
 
         recipients = curl_slist_append(recipients, to.c_str());
         curl_easy_setopt(curl, CURLOPT_MAIL_RCPT, recipients);
 
         std::string message = "To: " + to + "\r\n"
-                              "From: haripriyaajai99@gmail.com\r\n"
+                              "From: example@gmail.com\r\n"
                               "Subject: " + subject + "\r\n"
                               "\r\n" + body + "\r\n";
 
